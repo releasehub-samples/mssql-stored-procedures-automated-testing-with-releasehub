@@ -1,14 +1,39 @@
-# Welcome to your CDK TypeScript project
+# Using Release to test stored procedures with ephemeral Microsoft SQL Server databases
 
-This is a blank project for CDK development with TypeScript.
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
-## Useful commands
+docker-compose up -d
 
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `cdk deploy`      deploy this stack to your default AWS account/region
-* `cdk diff`        compare deployed stack with current state
-* `cdk synth`       emits the synthesized CloudFormation template
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Setup
+
+1. [Install the AWS CDK](https://docs.aws.amazon.com/cdk/v2/guide/getting_started.html#getting_started_install)
+
+1. From your local terminal or [AWS CloudShell](https://aws.amazon.com/cloudshell/), run `cdk bootstrap`
+
+1. [Optional] - Install Azure Data Studio 
+
+1. [Optional] - Install `jq`
+
+1. `docker-compose run --rm sql-runner` or `docker-compose exec sql-runner sh`
+
+1. After launching the CDK stack, retrieve the password by going to AWS Secrets Manager and finding the secret with a name that looks similar to `ReleaseMssqlStoredProcedure-B3vQAKPudkrT`.
+
+1. If running Docker Compose locally to test, the username is `sa` and password is `Pass@word`.
+## Acknowledgements
+
+* https://github.com/karlospn/deploy-dotnet-lambda-with-aws-cdk
+
+* https://www.mytecbits.com/internet/python/execute-sql-server-stored-procedure

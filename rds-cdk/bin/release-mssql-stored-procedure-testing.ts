@@ -4,7 +4,7 @@ import * as cdk from 'aws-cdk-lib';
 import { ReleaseMssqlStoredProcedureTestingStack } from '../lib/release-mssql-stored-procedure-testing-stack';
 
 const app = new cdk.App();
-new ReleaseMssqlStoredProcedureTestingStack(app, 'ReleaseMssqlStoredProcedureTestingStack', {
+const stack = new ReleaseMssqlStoredProcedureTestingStack(app, 'ReleaseMssqlStoredProcedureTestingStack', {
   /* If you don't specify 'env', this stack will be environment-agnostic.
    * Account/Region-dependent features and context lookups will not work,
    * but a single synthesized template can be deployed anywhere. */
@@ -19,3 +19,8 @@ new ReleaseMssqlStoredProcedureTestingStack(app, 'ReleaseMssqlStoredProcedureTes
 
   /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
 });
+const stackName = cdk.Stack.of(stack).stackName;
+
+cdk.Tags.of(stack).add('purpose', "demo of Release with MSSQL")
+cdk.Tags.of(stack).add('created_by', 'cdk');
+cdk.Tags.of(stack).add('stack_name', stackName)
