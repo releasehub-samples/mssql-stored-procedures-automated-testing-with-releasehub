@@ -12,7 +12,7 @@ echo
 
 function runSqlFile {
     local sqlFile=$1
-    sqlcmd -S $DB_HOST -U $DB_USER -P $DB_PASS -i $sqlFile
+    /opt/mssql-tools/bin/sqlcmd -S $DB_HOST -U $DB_USER -P $DB_PASS -i $sqlFile
 }
 
 echo '[UPDATING STORED PROCEDURES]'
