@@ -24,9 +24,12 @@ services:
 - name: database
   image: mcr.microsoft.com/mssql/server:2019-CU15-ubuntu-20.04
   ports:
-  - type: node_port
+  - type: container_port
     target_port: '1433'
     port: '1433'
+  memory:
+    limits: 2Gi
+    requests: 2Gi
 
 jobs:
   - name: run-sql-tests

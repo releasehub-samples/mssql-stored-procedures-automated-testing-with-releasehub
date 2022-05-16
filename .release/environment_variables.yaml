@@ -5,9 +5,9 @@ mapping:
   # The _RDS_DB_POOL_xxx vars are automatically provided by Release when your
   # app includes an instant dataset. When these values are not present we will
   # default to using the connection details of the MSSQL Express container:
-  - DB_HOST: ${MSSQL_DEMO_RDS_DB_POOL_HOST:-database}
-  - DB_USER: ${MSSQL_DEMO_RDS_DB_POOL_USER:-sa}
-  - DB_PASS: ${MSSQL_DEMO_RDS_DB_POOL_PASS:-Pass@word}
+  DB_HOST: ${MSSQL_DEMO_RDS_DB_POOL_HOST:-database}
+  DB_USER: ${MSSQL_DEMO_RDS_DB_POOL_USER:-sa}
+  DB_PASS: ${MSSQL_DEMO_RDS_DB_POOL_PASS:-Pass@word}
 
 services:
   database:
