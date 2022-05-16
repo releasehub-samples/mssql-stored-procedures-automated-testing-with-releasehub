@@ -1,3 +1,5 @@
+auto_deploy: true
+
 # If testing with a Release Instant Dataset, uncomment the two lines below and
 # edit the name of the dataset to match whatever name you gave your dataset.
 # Note that RDS Instant Datasets are not available in free trial accounts: 
