@@ -1,6 +1,10 @@
 #!/bin/bash
 set -e
 
+CURRENT_USER=$(whoami)
+echo "Running as user: $CURRENT_USER"
+echo
+
 echo "### SQL SERVER PROCEDURE TESTING STARTED ###"
 echo "--------------------------------------------"
 echo "Release environment ID = ${RELEASE_ENV_ID}"
