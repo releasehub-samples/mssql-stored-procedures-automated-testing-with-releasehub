@@ -9,23 +9,15 @@ services:
       context: ./sql-runner
       dockerfile: Dockerfile
     environment:
-      - DB_USER=will_be_provided_by_release
-      - DB_PASS=will_be_provided_by_release
-      - DB_HOST=will_be_provided_by_release
+      - DB_HOST=${MSSQL_DEMO_RDS_DB_POOL_HOST:-database}
+      - DB_USER=${MSSQL_DEMO_RDS_DB_POOL_HOST:-sa}
+      - DB_PASS=${MSSQL_DEMO_RDS_DB_POOL_HOST:-Pass@word}
 
 # In addition to the ephemeral Amazon RDS MSSQL database we will use
 # via Release Instance Datasets, we will also include an ephemeral
-# containerized version of MSSQL. Both approaches are valid and
-# depending on your use case. For example, Release Instant Datasets
-# create real, ephemeral RDS databases cloned from the snapshot you
-# provide; this is a good choice if, for example, you need to mirror 
-# your real production RDS instance as closely as possible or the 
-# size of the data needed for testing is impractical for a container. 
-# For small datasets where its ok to test within a container, you'll
-# save cost by using a MSSQL container. 
-
+# containerized version of MSSQL. Either option is valid with Release: 
   database:
-    container_name: db
+    container_name: database
     image: mcr.microsoft.com/mssql/server:2019-CU15-ubuntu-20.04
     environment:
       - SA_PASSWORD=Pass@word

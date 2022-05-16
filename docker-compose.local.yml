@@ -7,7 +7,4 @@ services:
     volumes:
       - ./sql-runner:/app
     environment:
-      - DB_USER=SA
-      - DB_PASS=Pass@word
-      - DB_HOST=db
       - RELEASE_ENV_ID=local_env_123    # In a real Release env, this is provided for you.
