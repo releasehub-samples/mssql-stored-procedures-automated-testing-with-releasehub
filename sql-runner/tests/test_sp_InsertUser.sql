@@ -5,7 +5,7 @@ GO
 
 SET NOCOUNT ON;
 DECLARE @command VARCHAR(255);
-SET @command = "InsertUser @username = 'Ted', @environment_id = '$(RELEASE_ENVIRONMENT_ID)'"
+SET @command = "InsertUser @username = 'Ted', @environment_id = '$(RELEASE_ENV_ID)'"
 PRINT "Running command: EXEC " + @command
 EXEC (@command)
 GO
