@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
-import { ReleaseMssqlStoredProcedureTestingStack } from '../lib/release-mssql-stored-procedure-testing-stack';
+import { RdsMssqlInstanceStack } from '../lib/rds-mssql-instance';
 
 const app = new cdk.App();
-const stack = new ReleaseMssqlStoredProcedureTestingStack(app, 'ReleaseMssqlStoredProcedureTestingStack', {
+const stack = new RdsMssqlInstanceStack(app, 'ReleaseMssqlDemoStack', {
   /* If you don't specify 'env', this stack will be environment-agnostic.
    * Account/Region-dependent features and context lookups will not work,
    * but a single synthesized template can be deployed anywhere. */
@@ -21,6 +21,6 @@ const stack = new ReleaseMssqlStoredProcedureTestingStack(app, 'ReleaseMssqlStor
 });
 const stackName = cdk.Stack.of(stack).stackName;
 
-cdk.Tags.of(stack).add('purpose', "demo of Release with MSSQL")
+cdk.Tags.of(stack).add('purpose', "Release demo of ephemeral RDS MSSQL SQL Server testing")
 cdk.Tags.of(stack).add('created_by', 'cdk');
 cdk.Tags.of(stack).add('stack_name', stackName)

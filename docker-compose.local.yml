@@ -1,0 +1,13 @@
+# If running on your local machine outside of Release, include
+# this file with the "-f" option in docker compose to mount the
+# local directory so you can edit files and see changes reflected
+# in your live, running container:
+services:
+  sql-runner:
+    volumes:
+      - ./sql-runner:/app
+    environment:
+      - DB_USER=SA
+      - DB_PASS=Pass@word
+      - DB_HOST=db
+      - RELEASE_ENV_ID=local_env_123    # In a real Release env, this is provided for you.

@@ -1,18 +1,18 @@
 {
-  "name": "release-mssql-stored-procedure-testing",
+  "name": "release-mssql-demo",
   "version": "0.1.0",
   "bin": {
-    "release-mssql-stored-procedure-testing": "bin/release-mssql-stored-procedure-testing.js"
+    "release-mssql-demo": "bin/release-mssql-demo.js"
   },
-  "scripts": {
-    "build": "tsc",
-    "watch": "tsc -w",
+  "scripts": {    
     "test": "jest",
-    "cdk": "cdk"
+    "build": "npm run build:lambda",
+    "build:lambda": "pwsh -command New-AWSPowerShellLambdaPackage -ScriptPath 'lambda/seed.ps1' -OutputPackage 'lambda/package.zip'"    
   },
   "devDependencies": {
     "@types/jest": "^27.4.1",
     "@types/node": "10.17.27",
+    "@types/tmp": "^0.2.3",
     "aws-cdk": "2.23.0",
     "jest": "^27.5.1",
     "ts-jest": "^27.1.4",
@@ -20,18 +20,9 @@
     "typescript": "~3.9.7"
   },
   "dependencies": {
-    "@aws-cdk/aws-ec2": "^1.156.0",
-    "@aws-cdk/aws-iam": "^1.156.0",
-    "@aws-cdk/aws-lambda": "^1.156.0",
-    "@aws-cdk/aws-logs": "^1.156.0",
-    "@aws-cdk/aws-rds": "^1.156.0",
-    "@aws-cdk/aws-s3": "^1.156.0",
-    "@aws-cdk/aws-secretsmanager": "^1.156.0",
-    "@aws-cdk/aws-ssm": "^1.156.0",
-    "@aws-cdk/core": "^1.156.0",
-    "@aws-cdk/custom-resources": "^1.156.0",
     "aws-cdk-lib": "2.23.0",
     "constructs": "^10.0.0",
-    "source-map-support": "^0.5.21"
+    "source-map-support": "^0.5.21",
+    "tmp": "^0.2.1"
   }
 }
