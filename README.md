@@ -1,4 +1,9 @@
-# Ephemeral SQL Server Test Environments
+# Testing version-controlled stored procedures in on-demand ,ephemeral SQL Server environemnts
+
+:warning: This Readme is a work in process, a bit messy, but I will clean it up!
+
+##
+![(diagram.png)]
 
 ## Initial Setup
 
