@@ -1,0 +1,59 @@
+# If testing with a Release Instant Dataset, uncomment the two lines below and
+# edit the name of the dataset to match whatever name you gave your dataset.
+# Note that RDS Instant Datasets are not available in free trial accounts: 
+environment_templates:
+- name: permanent
+- name: ephemeral
+  #datasets:
+  #  - name: NAME_OF_YOUR_DATASET
+
+services:
+- name: sql-runner
+  image: mat-release/release-mssql-stored-proc-tester/sql-runner
+  build:
+    context: "./sql-runner"
+    dockerfile: Dockerfile
+  has_repo: true
+  static: false
+
+# This is only an example demonstrating the possiblity of using a MSSQL 
+# contianer image rather than bringing up a real cloud database with
+# Release Instant Datasets: 
+- name: database
+  image: mcr.microsoft.com/mssql/server:2019-CU15-ubuntu-20.04
+  ports:
+  - type: node_port
+    target_port: '1433'
+    port: '1433'
+
+jobs:
+  - name: run-sql-tests
+    from_services: sql-runner
+    command:
+    - "./run-tests.sh"
+
+workflows:
+  - name: setup
+    order_from:
+    - services.all
+    - jobs.run-sql-tests
+
+  - name: patch
+    order_from:
+    - services.sql-runner
+    - jobs.run-sql-tests
+
+  - name: teardown
+    parallelize:
+    - step: remove_environment
+      tasks:
+      - release.remove_environment
+
+resources:
+  cpu:
+    limits: 1000m
+    requests: 100m
+  memory:
+    limits: 1Gi
+    requests: 100Mi
+  replicas: 1

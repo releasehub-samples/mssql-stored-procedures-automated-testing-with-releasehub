@@ -1,0 +1,22 @@
+---
+defaults: []
+
+services:
+  sql-runner:
+    # The _RDS_DB_POOL_xxx vars are automatically provided by Release when your
+    # app includes an instant dataset. When these values are not present we will
+    # default to using the connection details of the MSSQL Express container:
+    - key: DB_HOST
+      value: ${MSSQL_DEMO_RDS_DB_POOL_HOST:-database}
+    - key: DB_USER
+      value: ${MSSQL_DEMO_RDS_DB_POOL_USER:-sa}
+    - key: DB_PASS
+      value: ${MSSQL_DEMO_RDS_DB_POOL_PASS:-Pass@word}
+
+  database:
+    - key: SA_PASSWORD
+      value: Pass@word
+    - key: ACCEPT_EULA
+      value: Y
+    - key: MSSQL_PID
+      value: Express
