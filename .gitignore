@@ -10,3 +10,5 @@ cdk.out
 ignore/
 
 package.zip
+
+.DS_Store
