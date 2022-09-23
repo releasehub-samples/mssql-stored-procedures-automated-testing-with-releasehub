@@ -11,7 +11,7 @@ environment_templates:
 
 services:
 - name: sql-runner
-  image: mat-release/release-mssql-stored-proc-tester/sql-runner
+  image: releasehub-samples/release-mssql-stored-proc-tester/sql-runner
   build:
     context: "./sql-runner"
     dockerfile: Dockerfile
